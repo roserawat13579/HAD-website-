@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Humla Association of the Deaf (HAD)</title>
+<style>
+
+/* ============================================================
+   EDIT GUIDE
+   - Text content lives in the HTML body below, grouped by section.
+   - Colors, fonts and spacing are set as CSS variables right here
+     at the top of :root — change a value once, it updates everywhere.
+   - Each major section is marked with an HTML comment like
+     <!-- SECTION: Hero -->  so you can find it quickly.
+   ============================================================ */
+
+:root{
+  --ink:        #1f2e3a;   /* deep mountain-dusk blue, main text/bg */
+  --paper:      #f4eee0;   /* warm handmade-paper background */
+  --paper-dim:  #ece2ca;   /* slightly deeper paper, for cards */
+  --saffron:    #d5892b;   /* marigold / prayer-flag gold */
+  --maroon:     #7c2b2f;   /* monastery red, used for urgency + CTA */
+  --sage:       #5f6f52;   /* juniper green */
+  --line:       #c9bb9c;   /* hairline rule colour */
+  --white:      #fffaf0;
+
+  --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --sans:  "Work Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+
+  --max: 1120px;
+  --logo-size: 48px;   /* change this to resize the logo everywhere in the nav */
+}
+
+@font-face{
+  font-family: "Fraunces";
+  src: local("Fraunces");
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{
+  margin:0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,svg{ max-width:100%; display:block; }
+
+h1,h2,h3{
+  font-family: var(--serif);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 .5em 0;
+  color: var(--ink);
+}
+
+p{ margin: 0 0 1em 0; max-width: 62ch; }
+
+a{ color: var(--maroon); }
+
+.wrap{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ---------- header / nav ---------- */
+header.site{
+  position: sticky; top:0; z-index: 20;
+  background: rgba(244,238,224,.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 14px 28px; max-width: var(--max); margin:0 auto;
+}
+.brand{
+  display:flex; align-items:center; gap:12px;
+  font-family: var(--serif); font-weight:600; font-size: 1.08rem;
+  color: var(--ink); text-decoration:none;
+}
+.brand .mark{
+  width: var(--logo-size); height: var(--logo-size);
+  object-fit: contain; flex-shrink:0; border-radius: 50%;
+}
+.nav-links{ display:flex; gap:26px; list-style:none; margin:0; padding:0; }
+.nav-links a{
+  text-decoration:none; color: var(--ink); font-size: .95rem;
+  border-bottom: 1px solid transparent;
+}
+.nav-links a:hover{ border-bottom-color: var(--saffron); }
+.nav-cta{
+  background: var(--maroon); color: var(--white) !important;
+  padding: 8px 16px; border-radius: 3px; font-size:.9rem;
+}
+@media (max-width: 720px){
+  .nav-links{ display:none; }
+}
+
+/* ---------- hero ---------- */
+.hero{
+  padding: 76px 0 40px;
+  border-bottom: 1px solid var(--line);
+}
+.hero .wrap{ display:grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items:end; }
+.hero-eyebrow{
+  font-size: .85rem; color: var(--sage); margin-bottom: 14px; font-weight:600;
+}
+.hero h1{
+  font-size: clamp(2.1rem, 4.6vw, 3.1rem);
+  max-width: 14ch;
+}
+.hero p.lede{
+  font-size: 1.15rem; color: #3a3229; max-width: 46ch;
+}
+.hero-actions{ display:flex; gap:14px; margin-top: 22px; flex-wrap:wrap; }
+.btn{
+  display:inline-block; text-decoration:none; font-weight:600;
+  padding: 12px 22px; border-radius: 3px; font-size: .98rem;
+  border: 1px solid var(--ink);
+}
+.btn-primary{ background: var(--maroon); border-color: var(--maroon); color: var(--white); }
+.btn-ghost{ background: transparent; color: var(--ink); }
+
+.peaks{ width:100%; height:auto; }
+
+@media (max-width: 800px){
+  .hero .wrap{ grid-template-columns: 1fr; }
+}
+
+/* ---------- stat strip ---------- */
+.stats{
+  background: var(--ink); color: var(--paper);
+  padding: 34px 0;
+}
+.stats .wrap{
+  display:grid; grid-template-columns: repeat(4,1fr); gap: 24px;
+}
+.stat b{
+  font-family: var(--serif); display:block; font-size: 2rem; color: var(--saffron);
+}
+.stat span{ font-size: .88rem; opacity:.85; }
+@media (max-width:720px){
+  .stats .wrap{ grid-template-columns: repeat(2,1fr); }
+}
+
+/* ---------- generic section ---------- */
+section{ padding: 64px 0; }
+section h2{
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  max-width: 20ch;
+}
+.section-intro{
+  display:grid; grid-template-columns: .8fr 1.2fr; gap: 40px;
+  border-top: 1px solid var(--line);
+  padding-top: 40px;
+}
+@media (max-width:760px){ .section-intro{ grid-template-columns: 1fr; } }
+
+/* ---------- reality numbers ---------- */
+.figure-list{ display:grid; grid-template-columns: repeat(2,1fr); gap: 22px 32px; margin-top: 10px;}
+.figure{ border-left: 3px solid var(--saffron); padding-left: 14px; }
+.figure b{ font-family: var(--serif); font-size: 1.6rem; display:block; }
+.figure span{ font-size: .92rem; color:#4a4238; }
+@media (max-width:600px){ .figure-list{ grid-template-columns: 1fr; } }
+
+/* ---------- current shelter callout ---------- */
+.callout{
+  background: var(--paper-dim); border: 1px solid var(--line);
+  padding: 28px 30px; border-radius: 2px; margin-top: 26px;
+}
+.callout p{ margin:0; max-width: none; }
+.callout .who{ font-size:.9rem; color: var(--sage); margin-top:10px; }
+
+/* ---------- programs ---------- */
+.programs{ background: var(--paper-dim); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.program-list{ margin-top: 30px; display:flex; flex-direction:column; }
+.program{
+  display:grid; grid-template-columns: 56px 1fr; gap: 18px;
+  padding: 20px 0; border-top: 1px solid var(--line);
+}
+.program:last-child{ border-bottom: 1px solid var(--line); }
+.program .num{ font-family: var(--serif); font-size: 1.3rem; color: var(--saffron); }
+.program h3{ font-size: 1.08rem; margin-bottom: 4px; }
+.program p{ margin:0; font-size: .96rem; color: #4a4238; }
+
+/* ---------- challenges ---------- */
+.challenge-grid{
+  display:grid; grid-template-columns: 1fr 1fr; gap: 26px 34px; margin-top: 30px;
+}
+.challenge{ border-top: 1px solid var(--line); padding-top: 14px; }
+.challenge h3{ font-size: 1rem; color: var(--maroon); margin-bottom:6px; }
+.challenge p{ font-size: .94rem; color:#4a4238; margin:0; }
+@media (max-width:720px){ .challenge-grid{ grid-template-columns: 1fr; } }
+
+/* ---------- funding partners ---------- */
+.partners{ margin-top: 24px; display:flex; flex-wrap:wrap; gap: 10px; }
+.partners span{
+  border: 1px solid var(--line); padding: 7px 14px; border-radius: 20px;
+  font-size: .88rem; background: var(--white);
+}
+
+/* ---------- help / donate ---------- */
+.help{ background: var(--ink); color: var(--paper); }
+.help h2{ color: var(--white); }
+.help p{ color: #d9cfb8; }
+.help-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap: 26px; margin-top: 34px; }
+.help-card{
+  border: 1px solid #3a4a58; padding: 24px; border-radius: 3px;
+}
+.help-card h3{ color: var(--saffron); font-size: 1.05rem; }
+.help-card p{ color: #cfc6ae; font-size: .93rem; }
+.help-card a{ color: var(--saffron); font-weight:600; }
+@media (max-width:800px){ .help-grid{ grid-template-columns: 1fr; } }
+
+/* ---------- contact / footer ---------- */
+.contact{ padding: 60px 0 30px; }
+.contact-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.contact address{ font-style:normal; font-size: .96rem; }
+.contact address p{ margin: 0 0 6px 0; }
+@media (max-width:700px){ .contact-grid{ grid-template-columns: 1fr; } }
+
+footer{
+  border-top: 1px solid var(--line);
+  padding: 22px 0 40px; font-size: .84rem; color: #6a6151;
+}
+footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+
+.quote{
+  font-family: var(--serif); font-style: italic; font-size: 1.3rem;
+  border-left: 3px solid var(--maroon); padding-left: 20px; color: #2b3947;
+  max-width: 46ch;
+}
+</style>
+
+<style>
+/* ===== PHOTO / DONATION UPGRADE ===== */
+:root{
+  --accent:#d97732;
+  --accent2:#1f6f62;
+  --shadow:0 18px 50px rgba(31,46,58,.12);
+}
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(120deg, rgba(244,238,224,.97), rgba(244,238,224,.82)),
+    url("assets/photos/classroom-01.jpg") center/cover;
+}
+.hero::after{
+  content:"";
+  position:absolute; inset:auto -8% -90px auto;
+  width:330px; height:330px; border-radius:50%;
+  background:rgba(213,137,43,.14);
+}
+.hero .wrap{position:relative;z-index:1}
+.btn{transition:.25s ease;box-shadow:0 5px 16px rgba(31,46,58,.08)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(31,46,58,.14)}
+.photo-section{background:#fffaf0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.gallery-head{display:flex;justify-content:space-between;gap:25px;align-items:end;flex-wrap:wrap}
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:16px;
+  margin-top:30px;
+}
+.photo-card{
+  position:relative;overflow:hidden;border-radius:14px;background:#e8dfcc;
+  box-shadow:var(--shadow);min-height:220px;
+}
+.photo-card:nth-child(1){grid-column:span 7;min-height:390px}
+.photo-card:nth-child(2){grid-column:span 5}
+.photo-card:nth-child(3){grid-column:span 5}
+.photo-card:nth-child(4){grid-column:span 7}
+.photo-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.photo-card:hover img{transform:scale(1.05)}
+.photo-card figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:22px 18px 15px;
+  color:white;background:linear-gradient(transparent,rgba(0,0,0,.72));
+  font-weight:600
+}
+.donate-banner{
+  margin-top:35px;padding:32px;border-radius:18px;
+  background:linear-gradient(135deg,var(--maroon),#9c4a3f);
+  color:white;display:flex;justify-content:space-between;align-items:center;
+  gap:25px;box-shadow:var(--shadow)
+}
+.donate-banner h3{color:white;margin:0 0 6px}
+.donate-banner p{color:#f8e9d8;margin:0}
+.donate-banner .btn{background:white;color:var(--maroon);border-color:white}
+.edit-note{
+  margin-top:22px;padding:15px 18px;border-left:4px solid var(--saffron);
+  background:var(--paper-dim);font-size:.9rem
+}
+@media(max-width:700px){
+ .gallery{grid-template-columns:1fr}
+ .photo-card,.photo-card:nth-child(n){grid-column:span 1;min-height:250px}
+ .photo-card:nth-child(1){min-height:320px}
+ .donate-banner{align-items:flex-start;flex-direction:column}
+}
+</style>
+
+</head>
+<body>
+
+<!-- SECTION: Header / Nav -->
+<header class="site">
+  <nav class="nav">
+    <a href="#top" class="brand">
+      <!-- EDIT: replace assets/logo.png with your logo. Add photos under assets/photos/. -->
+      <img class="mark" src="assets/logo.png" alt="Humla Association of the Deaf logo">
+      Humla Association of the Deaf
+    </a>
+    <ul class="nav-links">
+      <li><a href="#gallery">Photos</a></li>
+       <li><a href="#reality">The reality</a></li>
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#challenges">Challenges</a></li>
+       <li><a href="#alliance">Partners</a></li>
+      <li><a href="#help" class="nav-cta">Support us</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="identity-strip">
+  <div class="wrap">
+    <span class="identity-badge">🇳🇵 <strong>Humla, Nepal</strong></span>
+    <span class="identity-badge">🤟 Deaf &amp; Hard-of-Hearing Education</span>
+    <span class="identity-badge">❤️ Non-Profit Public Welfare</span>
+  </div>
+</div>
+
+<!-- SECTION: Hero -->
+<div id="top" class="hero">
+  <div class="wrap">
+    <div>
+      <div class="hero-eyebrow">Sarkegad Rural Municipality · Humla, Karnali Province, Nepal</div>
+      <h1>Twenty deaf children in Nepal's most remote district need a roof that is theirs.</h1>
+      <p class="lede">Humla Association of the Deaf runs the only residential classroom for deaf and hard-of-hearing children in Humla District — currently a single rented room. More than 200 deaf children in this district are still out of school.</p>
+      <div class="hero-actions">
+        <a href="#help" class="btn btn-primary">Support the hostel</a>
+        <a href="#reality" class="btn btn-ghost">See the need</a>
+      </div>
+    </div>
+    <svg class="peaks" viewBox="0 0 400 220" fill="none">
+      <path d="M0 180 L60 90 L100 140 L150 60 L200 130 L250 40 L310 130 L360 100 L400 170 L400 220 L0 220 Z" fill="#ece2ca" stroke="#c9bb9c"/>
+      <path d="M250 40 L235 65 L265 65 Z" fill="#d5892b"/>
+      <line x1="235" y1="65" x2="150" y2="60" stroke="#7c2b2f" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <path d="M140 63 L150 55 L160 63 L150 68 Z" fill="#7c2b2f"/>
+      <path d="M180 61 L190 53 L200 61 L190 66 Z" fill="#d5892b"/>
+    </svg>
+  </div>
+</div>
+
+
+<!-- SECTION: Photo Gallery -->
+<section id="gallery" class="photo-section">
+  <div class="wrap">
+    <div class="gallery-head">
+      <div>
+        <div class="hero-eyebrow">SEE THE PEOPLE BEHIND THE MISSION</div>
+        <h2>Every child deserves a safe place to learn.</h2>
+      </div>
+    
+    </div>
+
+    <div class="gallery">
+   
+      <figure class="photo-card">
+        <img src="assets/photos/children-01.jpg" alt="Children at the residential school in Humla">
+        <figcaption>Children learning and growing together</figcaption>
+      </figure>
+      <figure class="photo-card">
+        <img src="assets/photos/classroom-01.jpg" alt="Inclusive classroom in Humla">
+        <figcaption>Inclusive education through sign language</figcaption>
+      </figure>
+      <figure class="photo-card">
+        <img src="assets/photos/community-01.jpg" alt="Community support in Humla">
+        <figcaption>Community support makes a difference</figcaption>
+      </figure>
+      <figure class="photo-card">
+        <img src="assets/photos/humla-01.jpg" alt="Landscape of Humla, Nepal">
+        <figcaption>Humla: beautiful, remote and in need of opportunity</figcaption>
+      </figure>
+    </div>
+
+    <div class="donate-banner">
+      <div>
+        <h3>Help build a safe home for these children.</h3>
+        <p>Your support can help provide housing, education, food, bedding, sanitation and learning materials.</p>
+      </div>
+      <a href="#help" class="btn">I want to help</a>
+    </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: Key stats -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>2,400</b><span>persons with disabilities in Humla District — 4.74% of the population (2015 census)</span></div>
+    <div class="stat"><b>200+</b><span>deaf children in Humla currently out of school</span></div>
+    <div class="stat"><b>20</b><span>deaf and hard-of-hearing children (7 boys, 13 girls, aged 5–13) sheltered and taught by HAD today</span></div>
+    <div class="stat"><b>NPR 10,000</b><span>monthly rent HAD struggles to cover for the room housing all 20 children</span></div>
+  </div>
+</div>
+
+<!-- SECTION: Who we are -->
+<section id="who">
+  <div class="wrap">
+    <div class="section-intro">
+      <h2>Who we are</h2>
+      <div>
+        <p>Humla Association of the Deaf (HAD) is a district-level, non-profit, public welfare organisation established in 2074 B.S. (2017 A.D.) in Humla — one of the most geographically isolated districts in Nepal. HAD is registered with the District Administration Office and has been affiliated with the Nepal Social Welfare Council since February 28, 2018.</p>
+        <p>HAD works across all seven rural municipalities of Humla District on sign-language training, capacity building, livelihood support, quality education for deaf children, and advocacy for their basic rights — with the goal of helping children who have been neglected or abandoned by family and society become self-reliant, independent citizens.</p>
+        <blockquote class="quote">"Children with hearing disabilities shall have the right to receive education through sign language." — Constitution of Nepal, Article 31(4)</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: The reality in Humla -->
+<section id="reality" style="background:var(--paper-dim); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-intro">
+      <h2>The reality in Humla</h2>
+      <div>
+        <p>A district-wide survey by HAD identified roughly 100 people with intellectual disabilities and 50 who are deaf or hard of hearing across Humla. Twenty of the district's deaf and hard-of-hearing children — neglected or abandoned by family and community — are now under HAD's care, taught in a single special resource class attached to Shree Dulli Primary School, Sarkegad-4.</p>
+        <div class="figure-list">
+          <div class="figure"><b>7 boys · 13 girls</b><span>the 20 children currently housed and taught by HAD, aged 5–13</span></div>
+          <div class="figure"><b>1 teacher</b><span>Krishna Dhami, the local teacher currently instructing every age group together</span></div>
+          <div class="figure"><b>1 cook</b><span>one woman arranged for cooking and sanitation for all 20 children</span></div>
+          <div class="figure"><b>1 ropani</b><span>of land already registered in HAD's name for a future classroom and hostel building</span></div>
+        </div>
+        <div class="callout">
+          <p>The children currently live in a single rented room shared with general school students, without enough beds, blankets, safe drinking water, toilets, or basic hygiene items — and HAD has struggled to cover even the NPR 10,000 monthly rent. Given Humla's terrain, a residential school is the only realistic way to reach these children at all.</p>
+          <div class="who">— Dharmadatta Phadera, President, Humla Association of the Deaf</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: Programs -->
+<section id="programs" class="programs">
+  <div class="wrap">
+    <h2>What HAD provides — and wants to expand</h2>
+    <p>With adequate support, HAD's residential school model covers the full range of a child's needs, not just a classroom seat.</p>
+    <div class="program-list">
+      <div class="program"><div class="num">01</div><div><h3>Inclusive education for deaf and disabled children</h3><p>Free schooling, sign-language instruction, and learning materials for children currently shut out of mainstream classrooms.</p></div></div>
+      <div class="program"><div class="num">02</div><div><h3>Residential hostel and safe housing</h3><p>A dedicated hostel building so children no longer share a single rented room with no privacy or adequate facilities.</p></div></div>
+      <div class="program"><div class="num">03</div><div><h3>Nepali Sign Language (NSL) training</h3><p>Training for teachers, families, and the children themselves, alongside NSL-based learning materials.</p></div></div>
+      <div class="program"><div class="num">04</div><div><h3>Digital accessibility and assistive technology</h3><p>Tools and technology that widen access to information and communication for deaf and hard-of-hearing students.</p></div></div>
+      <div class="program"><div class="num">05</div><div><h3>Livelihood and self-employment training</h3><p>Vocational and practical skills training so young people can become self-reliant as adults.</p></div></div>
+      <div class="program"><div class="num">06</div><div><h3>Leadership development for deaf women and youth</h3><p>Programs building confidence and leadership among deaf women and young people in the district.</p></div></div>
+      <div class="program"><div class="num">07</div><div><h3>Health, hygiene, and psychosocial support</h3><p>Coordination with local health centres for regular check-ups, first aid, and wellbeing support for the children in HAD's care.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: Challenges -->
+<section id="challenges">
+  <div class="wrap">
+    <h2>What stands in the way</h2>
+    <p>HAD has applied repeatedly to government and non-government bodies; most requests have gone unanswered. These are the gaps that remain.</p>
+    <div class="challenge-grid">
+      <div class="challenge"><h3>Housing</h3><p>20 children live in one rented room at NPR 10,000/month, with more children needing shelter turned away for lack of space.</p></div>
+      <div class="challenge"><h3>Basic facilities</h3><p>Beds, blankets, mattresses, safe drinking water, toilets, and hygiene items are all in short supply.</p></div>
+      <div class="challenge"><h3>Classroom space</h3><p>Teaching happens in one room shared with general students, which limits both groups' learning environment.</p></div>
+      <div class="challenge"><h3>Trained teachers</h3><p>A single teacher instructs every age group together, without enough NSL-based teaching materials.</p></div>
+      <div class="challenge"><h3>Staffing</h3><p>Not enough hands to cook, clean, and care for children living on-site full time.</p></div>
+      <div class="challenge"><h3>An office</h3><p>No office space or equipment exists to manage records, health data, or admissions for the district's deaf community.</p></div>
+      <div class="challenge"><h3>Reaching families</h3><p>Humla's terrain makes data collection and outreach to remote villages slow and costly.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SECTION: Alliance / Potential Partners -->
+<section id="alliance" class="alliance-section">
+  <div class="wrap">
+    <div class="section-intro">
+      <h2>Our alliance &amp; potential partners</h2>
+      <div>
+        <p>HAD is seeking collaboration with organisations that support deaf education, disability inclusion, child welfare and community development.</p>
+      </div>
+    </div>
+    <div class="alliance-grid">
+      <div class="alliance-card"><span>Disability Rights Fund</span></div>
+      <div class="alliance-card"><span>CBM Global Disability Inclusion</span></div>
+      <div class="alliance-card"><span>Deaf Child Worldwide</span></div>
+      <div class="alliance-card"><span>World Federation of the Deaf</span></div>
+      <div class="alliance-card"><span>USAID Small Grants</span></div>
+      <div class="alliance-card"><span>Rotary International Global Grants</span></div>
+      <div class="alliance-card"><span>GlobalGiving</span></div>
+      <div class="alliance-card"><span>Open Society Foundations</span></div>
+      <div class="alliance-card"><span>The Nippon Foundation</span></div>
+      <div class="alliance-card"><span>Liliane Foundation</span></div>
+    </div>
+    <p class="alliance-note">The organisations above are presented as potential partners identified by HAD, not as confirmed donors or formal partners unless separately stated.</p>
+  </div>
+</section>
+
+<!-- SECTION: Help / funding partners -->
+<section id="help" class="help">
+  <div class="wrap">
+    <h2>How you can help</h2>
+    <p>HAD is seeking partners, grants, and direct support to build the hostel and classroom building already planned on land the organisation owns.</p>
+    <div class="help-grid">
+      <div class="help-card">
+        <h3>Fund the hostel</h3>
+        <p>Direct contributions toward construction, bedding, sanitation, and food for the 20 children currently in HAD's care.</p>
+        <a href="mailto:humladeaf80@gmail.com">Contact us to donate →</a>
+      </div>
+      <div class="help-card">
+        <h3>Partner or fund a grant</h3>
+        <p>HAD is preparing proposals for organisations working in disability inclusion and education access.</p>
+        <a href="mailto:humladeaf80@gmail.com">Request a proposal →</a>
+      </div>
+      <div class="help-card">
+        <h3>Share HAD's work</h3>
+        <p>Help this reach organisations and individuals who support deaf education and disability rights in Nepal.</p>
+        <a href="mailto:humladeaf80@gmail.com">Get materials to share →</a>
+      </div>
+    </div>
+
+    <div class="bank-card">
+      <h3>Donate by Bank Transfer</h3>
+      <p class="bank-intro">If you would like to support the children directly, you can make a contribution through the HAD bank account below.</p>
+      <div class="bank-details">
+        <div class="bank-row account"><span>Account Number</span><strong id="accountNumber">0650100000090201</strong></div>
+        <div class="bank-row"><span>Account Name</span><strong>HUMLA BAHIRA SANGHA</strong></div>
+        <div class="bank-row"><span>Bank</span><strong>Citizens Bank</strong></div>
+        <div class="bank-row"><span>Branch</span><strong>Sarkegard Branch</strong></div>
+      </div>
+      <button class="copy-btn" type="button" onclick="copyAccount()">Copy account number</button>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: Contact -->
+<section class="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <h2>Get in touch</h2>
+        <p>HAD welcomes questions from donors, grant-makers, journalists, and anyone who wants to help the children of Humla get an education.</p>
+      </div>
+      <address>
+        <p><strong>Humla Association of the Deaf (HAD)</strong></p>
+        <p>Sarkegad Rural Municipality, Ward No. 4</p>
+        <p>Humla District, Karnali Province, Nepal</p>
+        <p>Phone: +977-9860031529 / 9848364444</p>
+        <p>Email: <a href="mailto:humladeaf80@gmail.com">humladeaf80@gmail.com</a></p>
+        <p>President: Dharmadatta Phadera</p>
+      </address>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="align-items:center;">
+    <img src="assets/logo.png" alt="Humla Association of the Deaf seal" style="width:46px; height:46px; object-fit:contain; opacity:.85;">
+    <span>© Humla Association of the Deaf (HAD). Registered with the District Administration Office; affiliated with the Nepal Social Welfare Council.</span>
+    <span>Site content drawn from HAD's official correspondence and rehabilitation plan.</span>
+  </div>
+</footer>
+
+
+<script>
+function copyAccount(){
+  const number=document.getElementById('accountNumber').textContent.trim();
+  navigator.clipboard.writeText(number).then(()=>{
+    const btn=document.querySelector('.copy-btn');
+    const old=btn.textContent;
+    btn.textContent='Copied ✓';
+    setTimeout(()=>btn.textContent=old,1800);
+  });
+}
+</script>
+</body>
+</html>
